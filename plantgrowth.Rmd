@@ -1,0 +1,48 @@
+---
+title: "plantgrowth"
+author: "sugarina19"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+exploring the PlantGrowth dataset
+
+```{r}
+head(PlantGrowth)
+str(PlantGrowth)
+```
+
+## Results
+calculating the mean and median
+```{r}
+tapply(PlantGrowth$weight, PlantGrowth$group, mean)
+tapply(PlantGrowth$weight, PlantGrowth$group, median)
+```
+
+including plot
+```{r}
+## boxplot(PlantGrowth$weight,PlantGrowth$group,xlab="weight",ylab="group",main="PlantGrowth")
+
+boxplot(weight ~ group, PlantGrowth,
+        xlab="group",
+        ylab="weight",
+        main="Plant Growth weight on different groups",
+        names = c("ctrl","trt1","trt2"),
+        col=c("red","green","blue"))
+```
+
+## Conclusion
+...
+
+## Session Info
+```{r}
+sessionInfo()
+```
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
